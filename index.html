@@ -1,66 +1,290 @@
-<!DOCTYPE html><html lang="en"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snith - Products</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="all.min.css">
-  <style>
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RISZ OFFICIAL STORE</title>
+<style>
+  :root{
+    --bg-deep:#05070c;
+    --bg-blue:#0b1a33;
+    --blue:#2aa8ff;
+    --blue-2:#6fd3ff;
+    --red:#ff3b3b;
+    --text:#eef6ff;
+    --glass:rgba(255,255,255,.08);
+    --glass-border:rgba(255,255,255,.18);
+  }
 
-    :root {
-      --harvey-dark: #1f4037;
-      --harvey-light: #99f2c8;
-      --dark-bg: linear-gradient(180deg, #2c5364 0%, #203a43 50%, #0f2027 100%);
-      --light-bg: linear-gradient(180deg, #99f2c8 0%, #1f4037 100%);
-      --glass-bg-dark: rgba(255, 255, 255, 0.05);
-      --glass-bg-light: rgba(255, 255, 255, 0.08);
-      --glass-border-dark: rgba(255, 255, 255, 0.1);
-      --glass-border-light: rgba(255, 255, 255, 0.15);
-      --text-primary-dark: #ffffff;
-      --text-primary-light: #ffffff;
-      --text-secondary-dark: rgba(255, 255, 255, 0.9);
-      --text-secondary-light: rgba(255, 255, 255, 0.9);
-      --shadow-light: 0 8px 32px rgba(31, 64, 55, 0.2);
-      --shadow-heavy: 0 20px 60px rgba(31, 64, 55, 0.3);
-    }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Poppins", system-ui, -apple-system, Arial, sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(1200px 700px at 10% -10%, #0e2b54 0%, transparent 60%),
+      radial-gradient(1200px 700px at 85% -10%, #001a34 0%, transparent 60%),
+      linear-gradient(135deg, var(--bg-deep), var(--bg-blue) 60%, #06101f);
+    overflow-x:hidden;
+  }
 
-    [data-theme="dark"] {
-      --current-bg: var(--dark-bg);
-      --glass-bg: var(--glass-bg-dark);
-      --glass-border: var(--glass-border-dark);
-      --text-primary: var(--text-primary-dark);
-      --text-secondary: var(--text-secondary-dark);
-    }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1;
+    background-image:
+      radial-gradient(circle at 20% 30%, #2aa8ff2a 0 28%, transparent 34%),
+      radial-gradient(circle at 80% 25%, #ff3b3b22 0 26%, transparent 34%),
+      linear-gradient(to bottom, #ffffff08 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 38px;
+    mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
+  }
 
-    [data-theme="light"] {
-      --current-bg: var(--light-bg);
-      --glass-bg: var(--glass-bg-light);
-      --glass-border: var(--glass-border-light);
-      --text-primary: var(--text-primary-light);
-      --text-secondary: var(--text-secondary-light);
-    }
+  #loading{
+    position:fixed; inset:0;
+    background:#02050b; color:var(--text);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    z-index:9999;
+  }
+  .spinner{
+    width:80px; height:80px; border-radius:50%;
+    border:8px solid #ffffff16; border-top-color:var(--blue); border-right-color:var(--red);
+    animation:spin 1s linear infinite;
+    box-shadow: 0 0 22px var(--blue), inset 0 0 12px #000;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .loading-text{
+    margin-top:14px; font-weight:800; letter-spacing:.6px;
+    text-shadow:0 0 10px var(--blue-2), 0 0 14px var(--blue);
+    animation:blink 1.6s ease-in-out infinite;
+  }
+  @keyframes blink{50%{opacity:.55}}
 
-    html {
-      scroll-behavior: smooth;
-    }
+  header{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(160%) blur(8px);
+    background:linear-gradient(180deg, #020812dd, #02081288 85%, transparent);
+    border-bottom:1px solid #ffffff18;
+  }
+  .wrap{max-width:1200px; margin:0 auto; padding:22px 20px 14px}
+  h1{
+    margin:0 0 8px 0; font-size:32px; line-height:1.2; text-align:center;
+    background: linear-gradient(90deg, #ffffff, var(--blue), var(--blue-2), #ffffff, var(--red), #ffffff, var(--blue));
+    background-size: 600% 100%;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: titleShift 7s ease-in-out infinite;
+    text-shadow: 0 0 18px #ffffff35;
+    letter-spacing:1px;
+  }
+  @keyframes titleShift{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+  }
+  .subtitle{
+    margin:0; text-align:center; opacity:.9; font-size:15px;
+  }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--current-bg);
-      color: var(--text-primary);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      overflow-x: hidden;
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      will-change: background;
-    }
+  .section{max-width:1200px; margin:22px auto 28px; padding:0 20px}
+  .section-title{
+    margin:22px 0 14px; font-weight:800; font-size:18px; letter-spacing:.3px;
+    color:#d9f2ff; text-shadow:0 0 10px var(--blue);
+  }
+  .hint{
+    margin:-4px 0 12px; font-size:12.5px; opacity:.8; text-align:center;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap:18px;
+  }
+
+  .btn{
+    --halo-1: var(--blue);
+    --halo-2: var(--blue-2);
+    position:relative; isolation:isolate;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    padding:16px 14px;
+    border-radius:16px;
+    color:var(--text); text-decoration:none; font-weight:800; text-align:center;
+    background: linear-gradient(135deg, #ffffff10, #ffffff06);
+    border:1px solid var(--glass-border);
+    box-shadow: 0 8px 28px #00000090, inset 0 0 0 1px #ffffff14;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+  }
+  .btn::before{
+    content:""; position:absolute; inset:-2px; z-index:-1; border-radius:18px;
+    background: linear-gradient(135deg, var(--halo-1), var(--halo-2));
+    filter: blur(10px); opacity:.6; transition:.25s;
+  }
+  .btn:hover{
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 34px #000000b5, 0 0 18px #2aa8ff66, 0 0 22px #6fd3ff66;
+  }
+  .btn:hover::before{filter: blur(14px); opacity:.95}
+  .icon{filter: drop-shadow(0 0 6px #ffffff30)}
+
+  .btn-pay{
+    --halo-1:#ffffff66; --halo-2:#ff8282;
+    background:linear-gradient(135deg, #ffffff12, #ffffff08);
+    border-color:#ffffff30;
+  }
+
+  .modal{
+    position:fixed; inset:0; display:none; align-items:center; justify-content:center;
+    background:#02040acc; z-index:5000; animation:fade .22s ease;
+  }
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal-card{
+    position:relative;
+    width:min(92vw, 380px);
+    background: #0b1326d6;
+    border:1px solid #ffffff22;
+    box-shadow: 0 0 22px #2aa8ff66, 0 0 36px #ff3b3b66, 0 12px 40px #000000f0;
+    border-radius:16px; padding:22px; text-align:center; backdrop-filter:blur(10px);
+  }
+  .modal-card h3{margin:0 0 8px}
+  .modal-card p{font-size:18px; margin:6px 0 2px; font-weight:800; letter-spacing:.5px}
+  .close{
+    position:absolute; top:10px; right:12px; font-size:26px; color:#ff9a9a; cursor:pointer;
+    text-shadow:0 0 10px #ff3b3b;
+  }
+  .qris-img{
+    width:100%; max-width:320px; border-radius:12px;
+    box-shadow: 0 0 16px #2aa8ffcc, 0 0 28px #ff3b3b99;
+  }
+
+  footer{margin:40px 0 26px; text-align:center; font-size:14px; opacity:.9}
+  footer .small{opacity:.8; font-size:13px}
+  .sr{position:absolute; left:-9999px}
+</style>
+</head>
+<body>
+
+<div id="loading" aria-live="polite">
+  <div class="spinner" role="status" aria-label="Memuat"></div>
+  <div class="loading-text">Loading Store...</div>
+</div>
+
+<audio id="bg-music" loop autoplay muted playsinline>
+  <source src="https://files.catbox.moe/pk4qnd.m4a" type="audio/mp4"/>
+</audio>
+<iframe src="https://files.catbox.moe/pk4qnd.m4a" allow="autoplay" class="sr" title="audio"></iframe>
+
+<header>
+  <div class="wrap">
+    <h1>RISZ OFFICIAL STORE</h1>
+    <p class="subtitle">Silahkan pilih barang yang ingin anda beli</p>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <h2 class="section-title">All Produk RISZ Official</h2>
+    <p class="hint">Silahkan hubungi owner jika ada bug</p>
+    <div class="grid" id="produk-list"></div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Payment</h2>
+    <div class="grid">
+      <a href="#" class="btn btn-pay" onclick="openModal('modalDana');return false;">💳 Dana</a>
+      <a href="#" class="btn btn-pay" onclick="openModal('modalGopay');return false;">💳 Gopay</a>
+      <a href="#" class="btn btn-pay" onclick="openModal('modalQris');return false;">🧾 QRIS</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Saluran Kami</h2>
+    <div class="grid">
+      <a href="https://t.me/riszfreescript" class="btn" target="_blank"><span class="icon">📢</span> Testimoni Telegram</a>
+      <a href="https://whatsapp.com/channel/0029VbB8wwoCXC3KYNWkpa1b" class="btn" target="_blank"><span class="icon">📢</span> Testimoni WhatsApp</a>
+      <a href="https://t.me/allinforiszzcrashed" class="btn" target="_blank"><span class="icon">ℹ️</span> Info Telegram</a>
+      <a href="https://whatsapp.com/channel/0029VbAvgkl3mFY9DLtYxo3n" class="btn" target="_blank"><span class="icon">ℹ️</span> Info WhatsApp</a>
+      <a href="https://t.me/RiszScript" class="btn" target="_blank"><span class="icon">💾</span> Script Free Telegram</a>
+      <a href="https://whatsapp.com/channel/0029Vb5wPOdBPzjZzvldPG1m" class="btn" target="_blank"><span class="icon">💾</span> Script Free WhatsApp</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Grup Kami</h2>
+    <div class="grid">
+      <a href="https://chat.whatsapp.com/GW2cTLHGM5W0P2FGTlxudN?mode=ac_t" class="btn" target="_blank"><span class="icon">👥</span> Grup Chat Marga</a>
+      <a href="https://t.me/public2RiszOfficial" class="btn" target="_blank"><span class="icon">👥</span> Grup Bebas Promosi 1</a>
+      <a href="https://t.me/RiszGrup" class="btn" target="_blank"><span class="icon">👥</span> Grup Bebas Promosi 2</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © RiszOfficial Developer<br>
+  <span class="small">Jika ada bug mohon hubungi owner</span>
+</footer>
+
+<div class="modal" id="modalDana">
+  <div class="modal-card">
+    <button class="close" onclick="closeModal('modalDana')">&times;</button>
+    <h3>Nomor Dana</h3>
+    <p>083876475366</p>
+  </div>
+</div>
+
+<div class="modal" id="modalGopay">
+  <div class="modal-card">
+    <button class="close" onclick="closeModal('modalGopay')">&times;</button>
+    <h3>Nomor Gopay</h3>
+    <p>083874837147</p>
+  </div>
+</div>
+
+<div class="modal" id="modalQris">
+  <div class="modal-card">
+    <button class="close" onclick="closeModal('modalQris')">&times;</button>
+    <h3>Scan QRIS</h3>
+    <img class="qris-img" src="https://files.catbox.moe/ouoeh3.png" alt="QRIS RISZ OFFICIAL"/>
+  </div>
+</div>
+
+<script>
+  const produk = [
+    "Murid Bug","Murid Ban WhatsApp","Partner Murban WhatsApp",
+    "Murid Nokos","Murid Script","Partner Pribadi",
+    "Script Solomonz Invictus","Script RiszzCrashed","Script RiszXcrash",
+    "Panel Private","Panel Public","Reseller Panel Private",
+    "Reseller Panel Public","Admin Panel Private","Admin Panel Public",
+    "Partner Panel Private","Partner Panel Public",
+    "Owner Panel Private","Owner Panel Public",
+    "Jasa Suntik All Sosmed","Jasa Top Up All Game"
+  ];
+  const grid = document.getElementById('produk-list');
+  const telegram = "https://t.me/RiszOffc3";
+  produk.forEach(item=>{
+    const a = document.createElement('a');
+    a.href = telegram; a.target = "_blank";
+    a.className = 'btn';
+    a.innerHTML = `<span class="icon">📦</span> ${item}`;
+    grid.appendChild(a);
+  });
+
+  // Loading tampil 5 detik
+  window.addEventListener('load', () => {
+    const ld = document.getElementById('loading');
+    setTimeout(()=>{
+      ld.style.opacity = '0';
+      setTimeout(()=>{ ld.style.display='none'; }, 300);
+    }, 5000);
+
+    const audio = document.getElementById('bg-music');
+    audio.muted = false;
+    audio.play().catch(()=>{});
+  });
+
+  function openModal(id){ document.getElementById(id).style.display='flex'; }
+  function closeModal(id){ document.getElementById(id).style.display='none'; }
+</script>
+</body>
+</html>    }
 
     body::before {
       content: '';
