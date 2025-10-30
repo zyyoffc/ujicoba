@@ -176,6 +176,208 @@
 
     <!-- Channels -->
     <nav class="channels" id="channels">
+      <a href="https://wa.me/62881036764627" target="_blank">Kontak Owner</a>
+      <a href="https://wa.me/62881036764627" target="_blank">Info Channel</a>
+      <a href="https://wa.me/62881036764627" target="_blank">Room Publik</a>
+    </nav>
+  </div>
+
+  <!-- Produk list -->
+  <div class="products" id="products">
+    <div class="card">
+      <h3>TOP UP MLBB</h3>
+      <ul>
+        <li>belum diatur hehe</li>
+       <ul>           
+      <a class="order-btn" href="https://files.catbox.moe/3uhu1m.jpeg" target="_blank">Order</a>
+      <a class="order-btn" href="https://wa.me/62881036764627" target="_blank">Hubungi</a>
+    </div>
+
+    <div class="card"> 
+      <h3>TOP UP FREE FIRE</h3>
+      <ul>
+        <li>belum diatur hehe</li>
+       <ul>           
+      <a class="order-btn" href="https://files.catbox.moe/3uhu1m.jpeg" target="_blank">Order</a>
+      <a class="order-btn" href="https://wa.me/62881036764627" target="_blank">Hubungi</a>
+    </div>
+
+    <div class="card"> 
+      <h3>TOP UP ROBUX</h3> 
+      <ul> 
+        <li>belum diatur hehe</li>
+      </ul>
+      <a class="order-btn" href="https://files.catbox.moe/3uhu1m.jpeg" target="_blank">Order</a>
+      <a class="order-btn" href="https://wa.me/62881036764627" target="_blank">Hubungi</a>
+    </div>
+
+    <div class="card"> 
+      <h3>JUAL AKUN</h3> 
+      <ul> 
+        <li>LANGSUNG HUBUNNGI</li> 
+      </ul> 
+      <a class="order-btn" href="https://files.catbox.moe/3uhu1m.jpeg" target="_blank">Order</a> 
+      <a class="order-btn" href="https://wa.me/62881036764627" target="_blank">Hubungi</a> 
+    </div> 
+    <div class="card"> 
+      <h3>BELI AKUN</h3> 
+      <ul> 
+        <li>LANGSUNG HUBUNGI</li> 
+      </ul> 
+      <a class="order-btn" href="https://files.catbox.moe/3uhu1m.jpeg" target="_blank">Order</a> 
+      <a class="order-btn" href="https://wa.me/62881036764627" target="_blank">Hubungi</a> 
+    </div>  
+
+  <script>
+    const text = ["WELCOME TO", "ZYY OFFICIAL STORE"];
+    let i = 0, j = 0;
+    const speed = 100;
+    const typingElement = document.getElementById("typing");
+    const buttons = document.getElementById("buttons");
+    const produkBtn = document.getElementById("produkBtn");
+    const products = document.getElementById("products");
+    const channels = document.getElementById("channels");
+
+    function typeWriter() {
+      if (i < text.length) {
+        if (j < text[i].length) {
+          typingElement.textContent += text[i][j];
+          j++;
+          setTimeout(typeWriter, speed);
+        } else {
+          typingElement.textContent += "\n";
+          i++;
+          j = 0;
+          setTimeout(typeWriter, 500);
+        }
+      } else {
+        typingElement.style.borderRight = "none";
+        buttons.classList.add("fade-in");
+        channels.classList.add("fade-in");
+      }
+    }
+
+    produkBtn.addEventListener("click", () => {
+      products.classList.add("show");
+      window.scrollTo({ top: products.offsetTop, behavior: "smooth" });
+    });
+
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>      box-shadow: 0 0 25px #00ffe0, 0 0 50px #0077ff inset;
+    }
+
+    .fade-in {
+      display: block !important;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .channels {
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      opacity: 0;
+      display: none;
+    }
+
+    .channels a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #00f5ff, #0077ff);
+      box-shadow: 0 0 10px rgba(0,255,200,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .channels a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0,255,200,0.6);
+    }
+
+    .channels.fade-in {
+      display: flex !important;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .products {
+      display: none;
+      opacity: 0;
+      margin-top: 40px;
+      max-width: 900px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .products.show {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0,255,200,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0,255,200,0.3);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #00f5ff;
+    }
+
+    .card p, .card ul {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .order-btn {
+      display: inline-block;
+      margin: 10px 5px 0 0;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(90deg, #00f5ff, #0077ff);
+      box-shadow: 0 0 10px rgba(0,255,200,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .order-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0,255,200,0.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="typing" id="typing"></div>
+    <div class="buttons" id="buttons">
+      <button class="btn" id="produkBtn">PRODUK</button>
+    </div>
+
+    <!-- Channels -->
+    <nav class="channels" id="channels">
       <a href="https://wa.me/6283834256959" target="_blank">Kontak Owner</a>
       <a href="https://wa.me/6283834256959" target="_blank">Info Channel</a>
       <a href="https://wa.me/6283834256959" target="_blank">Room Publik</a>
